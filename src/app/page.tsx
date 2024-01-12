@@ -1,6 +1,6 @@
 import React from "react";
 import BackgroundImage from "../../public/BackgroundImage";
-import Addtodo from "../../components/AddTodo";
+import Addtodo from "./components/AddTodo";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
             <div>
               <div className="flex justify-around mt-2 border-b-2 border-slate-950">
                 <h1 className="text-xl font-semibold ">To Do</h1>
-                <button className="w-5 h-5 bg-green-600 mt-1 rounded-full rounded-lg border border-slate-950 flex justify-center items-center ">
+                <button className="w-5 h-5 bg-green-600 mt-1 rounded-lg border border-slate-950 flex justify-center items-center ">
                   +
                 </button>
               </div>
