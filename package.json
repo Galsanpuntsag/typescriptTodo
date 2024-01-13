@@ -11,13 +11,16 @@
   "dependencies": {
     "daisy": "^0.2.0",
     "next": "14.0.4",
-    "react": "^18",
+    "node": "^21.2.0",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18",
     "reacticon": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
+    "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.6.0",
