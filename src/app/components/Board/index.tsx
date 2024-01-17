@@ -1,8 +1,9 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { status } from "@/app/utils";
+import { lstat } from "fs";
 
 type PropsType = {
   board: {
@@ -17,7 +18,15 @@ type PropsType = {
       isStatus: string;
     }[];
   };
-  handleOpen: () => void;
+  handleOpen?: () => void;
+};
+
+const [open, setOpen] = useState(false);
+const handleOpen = () => {
+  setOpen(true);
+};
+const handleClose = () => {
+  setOpen(false);
 };
 
 const Board: FC<PropsType> = ({ board, handleOpen }) => {
@@ -38,7 +47,7 @@ const Board: FC<PropsType> = ({ board, handleOpen }) => {
             )}
           </div>
           {board?.tasks.map((task, i) => (
-            <Draggable key={i} draggableId={task.id.toString()} index={i}>
+            <Draggable key={i} draggableId={task.id} index={i}>
               {(provided, snapshot) => (
                 <div
                   className={`card bg-base-100 w-full  shadow-xl my-5 p-5`}
@@ -78,16 +87,3 @@ const Board: FC<PropsType> = ({ board, handleOpen }) => {
 };
 
 export default Board;
-
-{
-  /* <div className=" w-1/4 rounded-lg border-2 border-slate-950 h-96 bg-slate-100   ">
-<div>
-    <div className="flex justify-around mt-2 border-b-2 border-slate-950">
-        <h1 className="text-xl font-semibold ">To Do</h1>
-        <button className="w-5 h-5 bg-green-600 mt-1 rounded-lg border border-slate-950 flex justify-center items-center ">
-        +
-        </button>
-    </div>
-</div>
-</div> */
-}

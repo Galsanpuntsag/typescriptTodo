@@ -2,13 +2,12 @@
 import React, { FC } from "react";
 import { useState } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
-
 import Board from "../Board";
 
 const Section = () => {
   const [boards, setBoards] = useState([
     {
-      id: "0",
+      id: "1",
       title: "ToDo",
       hasBtn: true,
       tasks: [
@@ -20,7 +19,7 @@ const Section = () => {
           isStatus: "ToDo",
         },
         {
-          id: "4",
+          id: "2",
           name: "FOurth Tasks",
           priority: "high",
           author: "John",
@@ -29,12 +28,12 @@ const Section = () => {
       ],
     },
     {
-      id: 1,
+      id: "2",
       title: "Doing",
       hasBtn: false,
       tasks: [
         {
-          id: "2",
+          id: "3",
           name: "Second Tasks",
           priority: "medium",
           author: "John",
@@ -43,12 +42,12 @@ const Section = () => {
       ],
     },
     {
-      id: 2,
+      id: "3",
       title: "Done",
       hasBtn: false,
       tasks: [
         {
-          id: "3",
+          id: "4",
           name: "Third Tasks",
           priority: "low",
           author: "John",
@@ -57,13 +56,6 @@ const Section = () => {
       ],
     },
   ]);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleOnDragEnd = (result: DropResult) => {
     const { source, destination } = result;
@@ -79,12 +71,12 @@ const Section = () => {
       //stringify ni boards bugdiin string bolgood Json parse aar object bolgoj avna
       const newData = [...JSON.parse(JSON.stringify(boards))];
       const oldDroppableId = newData.findIndex(
-        (el) => el.id === source.droppableId.split("-")[1]
-      );
+        (el) => (el.id === source.droppableId.split('-')[1])
+      )
 
       console.log("OLD_ID", oldDroppableId);
       const newDroppableId = newData.findIndex(
-        (el) => el.id === destination.droppableId.split("-")[1]
+        (el) => (el.id === destination.droppableId.split("-")[1])
       );
       console.log("NEW_ID", newDroppableId);
 
@@ -111,7 +103,7 @@ const Section = () => {
     <section className="flex justify-around mt-10">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         {boards.map((board, i) => (
-          <Board board={board} key={i} handleOpen={handleOpen} />
+          <Board board={board} key={i} handleOpen={()=>{}} />
         ))}
       </DragDropContext>
     </section>
